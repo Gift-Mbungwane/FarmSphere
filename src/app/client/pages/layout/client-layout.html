@@ -18,12 +18,13 @@
         <div
           class="flex items-center gap-4 px-8 py-3"
           *ngFor="let navigation of navigations"
+          (click)="toggleMenu()"
         >
           <i class="bi {{navigation.icon}}"></i>
 
           <a
             routerLink="{{navigation.url}}"
-            routerLinkActive="router-link-active"
+            routerLinkActive="active"
             class="text-3xl"
             >{{navigation.name}}</a
           >

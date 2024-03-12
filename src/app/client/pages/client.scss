@@ -1,7 +1,11 @@
 .clientLayout {
   i {
     font-size: 2rem;
-    color: green;
+    color: var(--green);
+  }
+
+  .active {
+    color: var(--green);
   }
 
   .menuContainer {
