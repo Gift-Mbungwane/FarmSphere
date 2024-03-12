@@ -1,0 +1,24 @@
+.clientLayout {
+  i {
+    font-size: 2rem;
+    color: green;
+  }
+
+  .menuContainer {
+    .menu {
+      animation-name: navbarmenu;
+      animation-duration: 0.5s;
+    }
+
+    @keyframes navbarmenu {
+      from {
+        margin-right: -100%;
+        opacity: 0;
+      }
+      to {
+        margin-right: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
