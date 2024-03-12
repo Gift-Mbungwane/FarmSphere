@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
 import {RouterOutlet} from '@angular/router'
-import {Desktop} from './auth/shared/ui/desktop/desktop'
+import {Desktop} from './shared/ui/desktop/desktop'
 import {CommonModule, NgIf} from '@angular/common'
 
 @Component({
