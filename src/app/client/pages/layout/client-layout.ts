@@ -2,6 +2,7 @@ import {CommonModule, NgFor, NgIf} from '@angular/common'
 import {Component} from '@angular/core'
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router'
 import {Navbar} from '../../ui/navbar/navbar'
+import { Footer } from 'src/app/shared/ui/footer/footer'
 
 @Component({
   templateUrl: './client-layout.html',
@@ -15,6 +16,7 @@ import {Navbar} from '../../ui/navbar/navbar'
     RouterLink,
     NgIf,
     RouterLinkActive,
+    Footer
   ],
 })
 export class ClientLayout {

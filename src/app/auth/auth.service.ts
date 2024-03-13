@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class AuthService {
   http = inject(HttpClient)
+  
 
   onLoginFn() {}
 

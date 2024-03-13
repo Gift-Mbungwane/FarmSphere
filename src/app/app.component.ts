@@ -11,5 +11,5 @@ import {CommonModule, NgIf} from '@angular/common'
   imports: [RouterOutlet, Desktop, CommonModule, NgIf],
 })
 export class AppComponent {
-  isMobile: boolean = window.innerWidth < 600 ? true : false
+  isMobile: boolean = window.innerWidth < 700 ? true : false
 }

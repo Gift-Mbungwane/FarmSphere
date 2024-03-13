@@ -1,4 +1,4 @@
-import {Injectable, inject} from '@angular/core'
+import {Injectable, inject, signal} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 
 @Injectable({
@@ -7,7 +7,9 @@ import {HttpClient} from '@angular/common/http'
 export class UserService {
   http = inject(HttpClient)
 
-  onLoginFn() {}
+  //userSignal = signal<{email: string} | undefined | null>(undefined);
+
+  onSetFn() {}
 
   onRegisterFn() {}
 }
