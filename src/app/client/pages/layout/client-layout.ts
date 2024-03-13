@@ -5,6 +5,7 @@ import {Navbar} from '../../ui/navbar/navbar'
 import { Footer } from 'src/app/shared/ui/footer/footer'
 
 @Component({
+  selector: 'client-layout',
   templateUrl: './client-layout.html',
   standalone: true,
   styleUrls: ['../client.scss'],

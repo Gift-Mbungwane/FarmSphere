@@ -1,25 +1,20 @@
-<div class="farmDetails h-full overflow-y-scroll flex flex-col">
+<div class="farmDetails h-full overflow-y-scroll flex flex-col" *ngIf='farm'>
   <div>
     <img
       class="w-full h-80 object-cover shadow-lg"
-      src="../../../../assets/images/a1.png"
+      [src]="farm.farmImageURL"
       alt=""
     />
   </div>
 
   <div class="flex flex-col mt-8 px-4">
-    <div class="text-2xl font-bold">FarmSphere Farm</div>
-    <div class="font-thin text-green-600">Newtown Johannesburg...</div>
+    <div class="text-2xl font-bold">{{farm.farmName}}</div>
+    <div class="font-thin text-green-600">{{farm.farmLocation}}</div>
   </div>
 
   <div class="flex flex-col mt-8 px-4 font-thin text-gray-600">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet tempora
-    blanditiis molestiae dolores aliquid ratione nisi amet nihil repellat
-    provident voluptatem eaque quod aut commodi, odit dolorem error doloribus ex
-    deleniti quaerat cum temporibus veniam corrupti. Quo iusto dolores repellat
-    at quis enim voluptas unde, perspiciatis voluptatibus minima expedita
-    reprehenderit.
+    {{farm.farmDescription}}
   </div>
 
-  <share-slider />
+  <share-slider [farmID]="farmID" />
 </div>

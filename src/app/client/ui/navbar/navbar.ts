@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common'
 import {Component, EventEmitter, Output} from '@angular/core'
+import { NavigateService } from 'src/app/shared/services/navigate.service'
 
 @Component({
   selector: 'client-navbar',
@@ -9,6 +10,8 @@ import {Component, EventEmitter, Output} from '@angular/core'
 })
 export class Navbar {
   @Output() toggle = new EventEmitter()
+
+  constructor(public navigate: NavigateService){}
 
   toggleMenu() {
     this.toggle.emit()
