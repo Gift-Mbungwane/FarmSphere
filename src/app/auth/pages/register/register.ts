@@ -4,6 +4,7 @@ import {RouterLink} from '@angular/router'
 import {AuthService} from '../../auth.service'
 import {UserService} from 'src/app/shared/services/user.service'
 import {NavigateService} from 'src/app/shared/services/navigate.service'
+import { AlertService } from 'src/app/shared/services/alert.service'
 
 @Component({
   selector: 'auth-register',
@@ -24,7 +25,8 @@ export class RegisterPage {
     private fb: FormBuilder,
     private authService: AuthService,
     private userService: UserService,
-    private navigate: NavigateService
+    private navigate: NavigateService,
+    private alert: AlertService
   ) {}
 
   onSubmit() {
@@ -41,15 +43,20 @@ export class RegisterPage {
         })
         this.userService.saveUserToStorageFn()
 
+        this.alert.success(`Welcome ${username}`)
+
         if (res.role === 'CONSUMER') {
           this.navigate.to('/client/home')
+          return;
         } 
 
         if (res.role === 'FARMER') {
           this.navigate.to('/client/home')
+          return;
         } 
       },
       (error) => {
+        this.alert.error(`Please try again later`)
       }
     )
   }
