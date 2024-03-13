@@ -11,14 +11,27 @@
 
   <h5 class="font-bold text-3xl mt-20 mb-12">Sign Up</h5>
 
-  <form class="flex flex-col px-12 w-full gap-6">
-    <div class="flex border rounded-[10px] w-full h-[50px] justify-center">
-      <select
-        class="bg-transparent placeholder-white text-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col px-12 w-full gap-6"
+  >
+    <div
+      class="flex border rounded-[10px] w-full h-[50px] justify-center relative"
+    >
+      <span
+        class="absolute top-[-1.7rem] text-green-200 font-bold left-0 text-sm"
+        >Select your role</span
       >
-        <option value="client" value="client" disabled selected>Select your role</option>
-        <option value="client">Client</option>
-        <option value="farmer">Farmer</option>
+      <select
+        class="bg-white/10 placeholder-white text-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
+        formControlName="role"
+      >
+        <option value="" value="client" disabled selected>
+          Select your role
+        </option>
+        <option value="CONSUMER">Consumer</option>
+        <option value="FARMER">Farmer</option>
       </select>
     </div>
     <div class="flex border rounded-[10px] w-full h-[50px] justify-center">
@@ -26,15 +39,15 @@
         type="text"
         formControlName="username"
         placeholder="Username"
-        class="bg-transparent text-white placeholder-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
+        class="bg-white/10 text-white placeholder-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
       />
     </div>
     <div class="flex border rounded-[10px] w-full h-[50px] justify-center">
       <input
         type="text"
-        formControlName="phone"
+        formControlName="phoneNumber"
         placeholder="Phone"
-        class="bg-transparent text-white placeholder-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
+        class="bg-white/10 text-white placeholder-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
       />
     </div>
     <div class="flex border rounded-[10px] w-full h-[50px] justify-center">
@@ -42,7 +55,7 @@
         type="password"
         formControlName="password"
         placeholder="Password"
-        class="bg-transparent text-white placeholder-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
+        class="bg-white/10 text-white placeholder-white focus:outline-none justify-center align-center w-full h-[50px] px-4"
       />
     </div>
 
@@ -52,7 +65,8 @@
 
     <button
       type="submit"
-      class="w-full h-[50px] shadow-md bg-black text-white text-[14px] font-bold py-2 px-4 rounded-[20px] focus:outline-none focus:shadow-outline"
+      class="w-full h-[50px] shadow-md bg-black disabled:bg-black/50 text-white text-[14px] font-bold py-2 px-4 rounded-[20px] focus:outline-none focus:shadow-outline"
+      [disabled]="!form.valid"
     >
       Sign Up
     </button>
