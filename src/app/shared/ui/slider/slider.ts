@@ -3,6 +3,7 @@ import {Product} from './product/product'
 import {NgFor, NgIf} from '@angular/common'
 import { ProductService } from '../../services/product.service';
 import { ProductInterface } from '../../types/product.interface';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'share-slider',
@@ -15,7 +16,7 @@ export class Slider implements OnInit {
 
   products: ProductInterface[] = []
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, public userService: UserService) {}
 
   ngOnInit(): void {
     this.getProductsByFarm()

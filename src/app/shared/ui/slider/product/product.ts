@@ -11,6 +11,7 @@ import {ProductInterface} from 'src/app/shared/types/product.interface'
 })
 export class Product {
   @Input() product!: ProductInterface
+  @Input() showCardButton: boolean = true
 
   constructor(private cartService: CartService) {}
 

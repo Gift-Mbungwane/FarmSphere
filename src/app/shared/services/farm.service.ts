@@ -23,4 +23,12 @@ export class FarmService {
 
     return this.http.get<FarmInterface>(SERVER + `/farm/${id}`)
   }
+
+  getFarmerFarms(farmerID: number | undefined): Observable<FarmInterface[]> {
+    const SERVER = environment.SERVER_URL
+
+    return this.http.get<FarmInterface[]>(
+      SERVER + `/farm/farmerFarms/${farmerID}`
+    )
+  }
 }
