@@ -1,6 +1,7 @@
 import {Injectable, signal} from '@angular/core'
 import {UserInterface} from '../types/user.interface'
 import {NavigateService} from './navigate.service'
+import {CartService} from 'src/app/client/services/cart.service'
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,10 @@ import {NavigateService} from './navigate.service'
 export class UserService {
   private userSignal = signal<UserInterface | null>(null)
 
-  constructor(private navigate: NavigateService) {}
+  constructor(
+    private navigate: NavigateService,
+    private cartService: CartService
+  ) {}
 
   // set user data in the state
   setUserSignal(user: UserInterface) {
@@ -38,8 +42,9 @@ export class UserService {
 
   // logout
   logoutFn() {
-    localStorage.clear()
     this.userSignal.set(null)
+    this.cartService.clearCart()
+    localStorage.clear()
     this.navigate.to('/public/login')
   }
 }

@@ -1,8 +1,10 @@
 import {CommonModule, NgFor, NgIf} from '@angular/common'
-import {Component} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router'
 import {Navbar} from '../../ui/navbar/navbar'
-import { Footer } from 'src/app/shared/ui/footer/footer'
+import {Footer} from 'src/app/shared/ui/footer/footer'
+import {CartService} from '../../services/cart.service'
+import {UserService} from 'src/app/shared/services/user.service'
 
 @Component({
   selector: 'client-layout',
@@ -17,24 +19,36 @@ import { Footer } from 'src/app/shared/ui/footer/footer'
     RouterLink,
     NgIf,
     RouterLinkActive,
-    Footer
+    Footer,
   ],
 })
-export class ClientLayout {
+export class ClientLayout implements OnInit {
   // navigation routes
-  navigations: {url: string; name: string; icon: string}[] = [
-    {url: '/client/home', name: 'Nearby farms', icon: 'bi-geo-alt'},
-    {url: '/client/orders', name: 'Orders', icon: 'bi-basket'},
-    {url: '/client/cart', name: 'Cart', icon: 'bi-cart'},
-    {url: '/client/notifications', name: 'Notifications', icon: 'bi-bell'},
-    {url: '/public/login', name: 'Logout', icon: 'bi-person-slash'},
-  ]
+  navigations: {url: string; name: string; icon: string; func?: () => void}[] =
+    [
+      {url: '/client/home', name: 'Nearby farms', icon: 'bi-geo-alt'},
+      {url: '/client/orders', name: 'Orders', icon: 'bi-basket'},
+      {url: '/client/cart', name: 'Cart', icon: 'bi-cart'},
+      {url: '/client/notifications', name: 'Notifications', icon: 'bi-bell'},
+      {url: '/public/login', name: 'Logout', icon: 'bi-person-slash'},
+    ]
 
   isMenuOpen: boolean = false
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen
+  constructor(
+    private cardService: CartService,
+    public userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    this.cardService.getCardFromStorage()
   }
 
- 
+  toggleMenu(name: string = 'toggle') {
+    this.isMenuOpen = !this.isMenuOpen
+
+    if (name === 'Logout') {
+      this.userService.logoutFn()
+    }
+  }
 }

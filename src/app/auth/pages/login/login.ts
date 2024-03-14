@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms'
 import {RouterLink} from '@angular/router'
 import {NavigateService} from 'src/app/shared/services/navigate.service'
@@ -13,7 +13,7 @@ import {AlertService} from 'src/app/shared/services/alert.service'
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
@@ -26,6 +26,10 @@ export class LoginPage {
     private navigate: NavigateService,
     private alert: AlertService
   ) {}
+
+  ngOnInit(): void {
+    localStorage.removeItem('cart')
+  }
 
   onSubmit() {
     this.authService.onLoginFn(this.form.getRawValue()).subscribe(
@@ -50,7 +54,7 @@ export class LoginPage {
         }
 
         if (res.role === 'FARMER') {
-          this.navigate.to('/client/home')
+          this.navigate.to('/farmer/home')
           return
         }
       },

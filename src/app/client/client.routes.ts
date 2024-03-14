@@ -5,6 +5,7 @@ import {OrdersPage} from './pages/orders/orders'
 import {CartPage} from './pages/cart/cart'
 import {NotificationsPage} from './pages/notifications/notifications'
 import {FarmDetailsPage} from './pages/farmDetails/farmDetails'
+import { CheckoutPage } from './pages/checkout/checkout'
 
 export const clientRoutes: Route[] = [
   {
@@ -26,6 +27,10 @@ export const clientRoutes: Route[] = [
       {
         path: 'notifications',
         component: NotificationsPage,
+      },
+      {
+        path: 'checkout',
+        component: CheckoutPage,
       },
       {
         path: 'farmdetails/:id',
