@@ -1,6 +1,7 @@
-import { NgIf } from '@angular/common'
+import {NgIf} from '@angular/common'
 import {Component, Input} from '@angular/core'
-import { ProductInterface } from 'src/app/shared/types/product.interface'
+import {CartService} from 'src/app/client/services/cart.service'
+import {ProductInterface} from 'src/app/shared/types/product.interface'
 
 @Component({
   selector: 'share-product',
@@ -10,4 +11,10 @@ import { ProductInterface } from 'src/app/shared/types/product.interface'
 })
 export class Product {
   @Input() product!: ProductInterface
+
+  constructor(private cartService: CartService) {}
+
+  addToCart() {
+    this.cartService.addToCartSignal(this.product)
+  }
 }
