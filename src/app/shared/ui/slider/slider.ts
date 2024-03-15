@@ -16,6 +16,8 @@ export class Slider implements OnInit {
 
   products: ProductInterface[] = []
 
+  @Input() showCardButton: boolean = true
+
   constructor(private productService: ProductService, public userService: UserService) {}
 
   ngOnInit(): void {
